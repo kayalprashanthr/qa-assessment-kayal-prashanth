@@ -1,7 +1,7 @@
 import {Page, test, BrowserContext} from "@playwright/test";
 import { loginPage } from "../pages/loginPage";
 import { addAccounts } from "../pages/addAccounts";
-import { goTrade } from "../pages/goTrade";
+import { goTrade } from "../pages/goTradeOKX";
 
 test.describe("Regression", ()=>{
     test.setTimeout(360000);
