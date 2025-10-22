@@ -4,7 +4,7 @@ import { addAccounts } from "../pages/addAccounts";
 import { goTrade } from "../pages/goTrade";
 
 test.describe("Regression", ()=>{
-    test.setTimeout(36000);
+    test.setTimeout(360000);
     let page:Page;
     let context:BrowserContext;
     test.beforeAll(async({browser}) =>{
@@ -20,7 +20,7 @@ test.describe("Regression", ()=>{
         await login.signIn(email,password);
         await page.waitForTimeout(5000);
     })
-    test.skip("addAccounts",async()=>{
+    test("addAccounts",async()=>{
         // OKX
         const Password:string = "Ethishan03$";
         let OKXName:string = "AutomationTestOKX";
@@ -28,12 +28,12 @@ test.describe("Regression", ()=>{
         const OKXSecret:string = "EB067275097F317095DDAC7F89CBBDB0";
         // Binance USD-M
         let USDMName:string = "AutomationTestUSDM";
-        const USDMKey:string = "yPV4io5RORontRvfVklqa7NEfFebzae3CfIW7Vp64mPwO2y6smLmSAxYcZ6cCMb8";
-        const USDMSecret:string = "IBPOkRCNSXidSWstIXSHW4UFhIYAsSLS7kiPgiOJE1g2JTrN7jLba4CMJmboo2MY";
+        const USDMKey:string = "fnSrifSofyjR24ybGLIkXm5ETuy9ftDqGPObdUOoxmoKY9dd4TCJrnnNgPxcHt23";
+        const USDMSecret:string = "4hBoEvE1SHgfR9GTmF0df7y4wKfqTTET2B2MOmMzWoFTXwz1d8rbDvEAVGhboKkJ";
         // Binance Coin-M
         let CoinMName:string = "AutomationTestCoinM";
-        const CoinMKey:string = "yPV4io5RORontRvfVklqa7NEfFebzae3CfIW7Vp64mPwO2y6smLmSAxYcZ6cCMb8";
-        const CoinMSecret:string = "IBPOkRCNSXidSWstIXSHW4UFhIYAsSLS7kiPgiOJE1g2JTrN7jLba4CMJmboo2MY";
+        const CoinMKey:string = "fnSrifSofyjR24ybGLIkXm5ETuy9ftDqGPObdUOoxmoKY9dd4TCJrnnNgPxcHt23";
+        const CoinMSecret:string = "4hBoEvE1SHgfR9GTmF0df7y4wKfqTTET2B2MOmMzWoFTXwz1d8rbDvEAVGhboKkJ";
         const acc = new addAccounts(page);
         await acc.addAccOKX(Password, OKXName, OKXKey, OKXSecret);
         await acc.addAccUSDM(USDMName, USDMKey, USDMSecret);
@@ -44,6 +44,6 @@ test.describe("Regression", ()=>{
         const order = new goTrade(page);
         await order.placeTrade();
         await order.marketEdgeTrade(symbolName);
-        await page.pause();
+        //await page.pause();
     })
 })

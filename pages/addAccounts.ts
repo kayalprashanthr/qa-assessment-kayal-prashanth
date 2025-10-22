@@ -15,10 +15,10 @@ export class addAccounts{
         await this.page.click(this.admin);
         await this.page.click("//button[text()='Add Account']");
         //For OKX
-        await this.page.locator("//input[@name='accountName']").pressSequentially(OKXName,{delay:100})
-        await this.page.locator("//input[@name='apiKey']").pressSequentially(OKXKey,{delay:100});
-        await this.page.locator("//input[@name='apiSecret']").pressSequentially(OKXSecret,{delay:100})
-        await this.page.locator("//input[@name='passphrase']").pressSequentially(Password,{delay:100});
+        await this.page.locator("//input[@name='accountName']").pressSequentially(OKXName,{delay:50})
+        await this.page.locator("//input[@name='apiKey']").pressSequentially(OKXKey,{delay:50});
+        await this.page.locator("//input[@name='apiSecret']").pressSequentially(OKXSecret,{delay:50})
+        await this.page.locator("//input[@name='passphrase']").pressSequentially(Password,{delay:50});
         await this.page.click("//button[@role='switch']");
         await this.page.click("(//button[text()='Add Account'])[2]");
         await this.page.waitForTimeout(10000);
@@ -27,10 +27,11 @@ export class addAccounts{
         //For Binance USD-M
         await this.page.click("//button[text()='Add Account']");
         await this.page.click("//div[@class='flex items-center gap-x-2 px-1']");
-        await this.page.click("//span[text()='Binance USDⓈ-M']");
-        await this.page.locator("//input[@name='accountName']").pressSequentially(USDMName,{delay:100});
-        await this.page.locator("//input[@name='apiKey']").pressSequentially(USDMKey,{delay:100});
-        await this.page.locator("//input[@name='apiSecret']").pressSequentially(USDMSecret,{delay:100});
+        await this.page.fill("//input[@data-testid='exchange-search-input']","USD");
+        await this.page.click("//div[@data-testid='exchange-option-BINANCEUSDM']");
+        await this.page.locator("//input[@name='accountName']").pressSequentially(USDMName,{delay:50});
+        await this.page.locator("//input[@name='apiKey']").pressSequentially(USDMKey,{delay:50});
+        await this.page.locator("//input[@name='apiSecret']").pressSequentially(USDMSecret,{delay:50});
         await this.page.click("//button[@role='switch']");
         await this.page.click("(//button[text()='Add Account'])[2]");
         await this.page.waitForTimeout(10000);
@@ -38,10 +39,11 @@ export class addAccounts{
     async addAccCoinM(CoinMName:string, CoinMKey:string, CoinMSecret:string){
         await this.page.click("//button[text()='Add Account']");
         await this.page.click("//div[@class='flex items-center gap-x-2 px-1']");
-        await this.page.click("//span[text()='Binance COIN-M']");
-        await this.page.locator("//input[@name='accountName']").pressSequentially(CoinMName,{delay:100});
-        await this.page.locator("//input[@name='apiKey']").pressSequentially(CoinMKey,{delay:100});
-        await this.page.locator("//input[@name='apiSecret']").pressSequentially(CoinMSecret,{delay:100});
+        await this.page.fill("//input[@data-testid='exchange-search-input']","Coin");
+        await this.page.click("//div[@data-testid='exchange-option-BINANCECOINM']");
+        await this.page.locator("//input[@name='accountName']").pressSequentially(CoinMName,{delay:50});
+        await this.page.locator("//input[@name='apiKey']").pressSequentially(CoinMKey,{delay:50});
+        await this.page.locator("//input[@name='apiSecret']").pressSequentially(CoinMSecret,{delay:50});
         await this.page.click("//button[@role='switch']");
         await this.page.click("(//button[text()='Add Account'])[2]");
         await this.page.waitForTimeout(10000);
