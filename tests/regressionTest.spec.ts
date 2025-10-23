@@ -20,7 +20,7 @@ test.describe("Regression", ()=>{
         await login.signIn(email,password);
         await page.waitForTimeout(5000);
     })
-    test("addAccounts",async()=>{
+    test.skip("addAccounts",async()=>{
         // OKX
         const Password:string = "Ethishan03$";
         let OKXName:string = "AutomationTestOKX";
@@ -40,10 +40,11 @@ test.describe("Regression", ()=>{
         await acc.addAccCoinM(CoinMName, CoinMKey, CoinMSecret);
     })
     test("Place Trade Order in OKX",async()=>{
-        let symbolName:string = "DOT-USDT"
+        let symbolName:string = "DOT-USDT";
+        let longorshort:string = "long" // Must be small letter
         const order = new goTrade(page);
         await order.placeTrade();
-        await order.marketEdgeTrade(symbolName);
+        await order.marketEdgeTrade(symbolName,longorshort);
         //await page.pause();
     })
 })
