@@ -40,15 +40,19 @@ test.describe("Regression", ()=>{
         await acc.addAccCoinM(CoinMName, CoinMKey, CoinMSecret);
     })
     test("Place Trade Order in OKX",async()=>{
-        const randomSymbols: string[] = ['BTC-USDT', 'ETH-USDT', 'DOT-USDT', 'SOL-USDT', 'XRP-USDT'];
-        let longorshort:string = "long" // Must be small letter
+        const randomSymbols: string[] = ['XRP-USDT', 'PI-BRL', 'DOT-USDT', 'SOL-EUR', 'PEPE-BRL', 'BNB-USDT'];
+        const randombet: string[] = ['long', 'short']; // To be small case
         const symbolName = randomSymbols.sort(() => 0.5 - Math.random());
+        const longorshort = [...Array(6)].map(() => randombet[Math.random() < 0.5 ? 0 : 1]);
+
         const order = new goTrade(page);
         await order.placeTrade();
-        await order.marketEdgeTrade(symbolName[0],longorshort);
-        await order.limitEdgeTrade(symbolName[1],longorshort);
-        await order.TWAPEdgeTrade(symbolName[2],longorshort);
-        await order.marktTrade(symbolName[3],longorshort);
+        await order.marketEdgeTrade(symbolName[0],longorshort[0]);
+        await order.limitEdgeTrade(symbolName[1],longorshort[1]);
+        await order.TWAPEdgeTrade(symbolName[2],longorshort[2]);
+        await order.marktTrade(symbolName[3],longorshort[3]);
+        await order.limitTrade(symbolName[4],longorshort[4]);
+        await order.TWAPTrade(symbolName[5],longorshort[5]);
         //await page.pause();
     })
 })
