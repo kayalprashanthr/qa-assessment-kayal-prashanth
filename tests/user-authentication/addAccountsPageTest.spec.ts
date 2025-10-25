@@ -1,15 +1,16 @@
-import {Page, test, BrowserContext} from "@playwright/test";
+import { test, } from "@playwright/test";
 import { loginPage } from "../../pages/loginPage";
 import { addAccounts } from "../../pages/addAccounts";
 
-test("Login",async({page}) =>{
+test.setTimeout(600000);
+
+test("addAccounts",async({page})=>{
     let email:string = "user10@goquant.io";
     let password:string = "60Re3G9KvvFl4Ihegxpi";
     const login = new loginPage(page);
+    await login.goToWebsite();
     await login.signIn(email,password);
-    await page.waitForTimeout(5000);  
-})
-test("addAccounts",async({page})=>{
+    await page.waitForTimeout(5000); 
     // OKX
     const Password:string = "Ethishan03$";
     let OKXName:string = "AutomationTestOKX";

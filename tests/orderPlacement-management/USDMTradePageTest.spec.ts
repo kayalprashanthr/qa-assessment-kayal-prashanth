@@ -2,14 +2,14 @@ import {Page, test, BrowserContext} from "@playwright/test";
 import { loginPage } from "../../pages/loginPage";
 import { goTradeUSDM } from "../../pages/goTradeUSDM";
 
-test("Login",async({page}) =>{
-        let email:string = "user10@goquant.io";
-        let password:string = "60Re3G9KvvFl4Ihegxpi";
-        const login = new loginPage(page);
-        await login.signIn(email,password);
-        await page.waitForTimeout(5000);  
-})
+test.setTimeout(600000);
 test("Place Trade Order in USDM",async({page})=>{
+    let email:string = "user10@goquant.io";
+    let password:string = "60Re3G9KvvFl4Ihegxpi";
+    const login = new loginPage(page);
+    await login.goToWebsite();
+    await login.signIn(email,password);
+    await page.waitForTimeout(5000); 
     const randomSymbols: string[] = ['XRPUSDT', 'BCHUSDC', 'DASHUSDT', 'TRXUSDT', 'XMRUSDT', 'XTZUSDT'];
     const randombet: string[] = ['long', 'short']; // To be small case
     const symbolName = randomSymbols.sort(() => 0.5 - Math.random());

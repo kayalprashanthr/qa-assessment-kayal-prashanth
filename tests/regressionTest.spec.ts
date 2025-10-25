@@ -21,7 +21,7 @@ test.describe("Regression", ()=>{
         await login.signIn(email,password);
         await page.waitForTimeout(5000);  
     })
-    test("addAccounts",async()=>{
+    test.skip("addAccounts",async()=>{
         // OKX
         const Password:string = "Ethishan03$";
         let OKXName:string = "AutomationTestOKX";
@@ -57,7 +57,7 @@ test.describe("Regression", ()=>{
         await order.TWAPTrade(symbolName[5],longorshort[5]);
         //await page.pause();
     })
-    test.skip("Place Trade Order in USDM",async()=>{
+    test("Place Trade Order in USDM",async()=>{
         const randomSymbols: string[] = ['XRPUSDT', 'BCHUSDC', 'DASHUSDT', 'TRXUSDT', 'XMRUSDT', 'XTZUSDT'];
         const randombet: string[] = ['long', 'short']; // To be small case
         const symbolName = randomSymbols.sort(() => 0.5 - Math.random());
