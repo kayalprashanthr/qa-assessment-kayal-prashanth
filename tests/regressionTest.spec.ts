@@ -1,7 +1,8 @@
 import {Page, test, BrowserContext} from "@playwright/test";
 import { loginPage } from "../pages/loginPage";
 import { addAccounts } from "../pages/addAccounts";
-import { goTrade } from "../pages/goTradeOKX";
+import { goTradeOKX } from "../pages/goTradeOKX";
+import { goTradeUSDM } from "../pages/goTradeUSDM";
 
 test.describe("Regression", ()=>{
     test.setTimeout(360000);
@@ -18,9 +19,9 @@ test.describe("Regression", ()=>{
         let password:string = "60Re3G9KvvFl4Ihegxpi";
         const login = new loginPage(page);
         await login.signIn(email,password);
-        await page.waitForTimeout(5000);
+        await page.waitForTimeout(5000);  
     })
-    test.skip("addAccounts",async()=>{
+    test("addAccounts",async()=>{
         // OKX
         const Password:string = "Ethishan03$";
         let OKXName:string = "AutomationTestOKX";
@@ -38,14 +39,31 @@ test.describe("Regression", ()=>{
         await acc.addAccOKX(Password, OKXName, OKXKey, OKXSecret);
         await acc.addAccUSDM(USDMName, USDMKey, USDMSecret);
         await acc.addAccCoinM(CoinMName, CoinMKey, CoinMSecret);
+        await page.pause();
     })
-    test("Place Trade Order in OKX",async()=>{
+    test.skip("Place Trade Order in OKX",async()=>{
         const randomSymbols: string[] = ['XRP-USDT', 'PI-BRL', 'DOT-USDT', 'SOL-EUR', 'PEPE-BRL', 'BNB-USDT'];
         const randombet: string[] = ['long', 'short']; // To be small case
         const symbolName = randomSymbols.sort(() => 0.5 - Math.random());
         const longorshort = [...Array(6)].map(() => randombet[Math.random() < 0.5 ? 0 : 1]);
 
-        const order = new goTrade(page);
+        const order = new goTradeOKX(page);
+        await order.placeTrade();
+        await order.marketEdgeTrade(symbolName[0],longorshort[0]);
+        await order.limitEdgeTrade(symbolName[1],longorshort[1]);
+        await order.TWAPEdgeTrade(symbolName[2],longorshort[2]);
+        await order.marktTrade(symbolName[3],longorshort[3]);
+        await order.limitTrade(symbolName[4],longorshort[4]);
+        await order.TWAPTrade(symbolName[5],longorshort[5]);
+        //await page.pause();
+    })
+    test.skip("Place Trade Order in USDM",async()=>{
+        const randomSymbols: string[] = ['XRPUSDT', 'BCHUSDC', 'DASHUSDT', 'TRXUSDT', 'XMRUSDT', 'XTZUSDT'];
+        const randombet: string[] = ['long', 'short']; // To be small case
+        const symbolName = randomSymbols.sort(() => 0.5 - Math.random());
+        const longorshort = [...Array(6)].map(() => randombet[Math.random() < 0.5 ? 0 : 1]);
+
+        const order = new goTradeUSDM(page);
         await order.placeTrade();
         await order.marketEdgeTrade(symbolName[0],longorshort[0]);
         await order.limitEdgeTrade(symbolName[1],longorshort[1]);

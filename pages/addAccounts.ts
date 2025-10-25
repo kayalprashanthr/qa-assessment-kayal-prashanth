@@ -1,5 +1,4 @@
 import { Page, expect } from "@playwright/test";
-
 export class addAccounts{
     readonly page:Page;
     readonly accounts:string;
