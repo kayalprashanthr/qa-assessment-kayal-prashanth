@@ -24,7 +24,7 @@ My primary recommendation is that a production release be deferred until all 5 C
 
 ## Testing Methodology
 
-## Testing Approach
+### Testing Approach
 
 I employed a comprehensive risk-based testing strategy that prioritized the most critical user journeys and potential failure points within the core application, specifically targeting components tied to financial transactions and external API communication. This approach was designed to maximize the discovery of high-impact issues while ensuring efficient use of the 5-day testing window. The methodology was structured around three distinct phases, each building upon the previous phase's findings.
 
@@ -34,7 +34,7 @@ The second phase involved Comprehensive Functional Testing, where I systematical
 
 The final phase focused on Edge Case and Boundary Testing. Here, I deliberately stressed the application with scenarios like invalid API keys, attempts to modify accounts with corrupted parameters, and performing rapid, successive actions. This was done to check how the application handled unexpected or rapid user actions that could reveal underlying architectural weaknesses or integration failure points.
 
-## Test Case Selection Rationale and In-Depth Analysis
+### Test Case Selection Rationale and In-Depth Analysis
 
 The selection of the 21 distinct test cases was driven by a thorough risk assessment, considering both high business impact (potential financial loss) and technical complexity (external API reliance). The cases were organized into primary categories addressing specific aspects of application quality.
 
@@ -44,42 +44,17 @@ Order Execution and Data Integrity received the most comprehensive test coverage
 
 Data Segregation and Reconciliation tests focused on the integrity and security of user data. This validation confirmed the severe data exposure issue where the reconciliation API returned entries belonging to multiple User IDs, indicating a fundamental server-side filtering failure.
 
-## Tools and Techniques Employed
+### Tools and Techniques Employed
 
 The foundation of the testing was a Black Box Manual Testing approach to accurately replicate genuine user interaction across all target environments. For detailed observation and technical logging, I actively leveraged Browser Developer Tools, specifically the Console and Network tabs, on a continuous basis. This method allowed for the capture of crucial technical evidence, including specific HTTP error codes, the raw API response payloads, and WebSocket stream failures for the Order Book.
 
 The overall test design and documentation utilized principles from modern automation practices, including TypeScript, Playwright, and the Page Object Model structure. This knowledge ensured that all manual steps were organized, repeatable, and easily translatable for future automation efforts. All technical evidence, screen recordings, and defect commentary were meticulously aggregated in the accompanying Workbook Reports.
 
-## Challenges Encountered and Solutions Implemented
+### Challenges Encountered and Solutions Implemented
 
 Throughout the testing process, I encountered several technical challenges that required focused investigation and demonstrated the complexity of testing modern web applications and external integrations.
 
 A major constraint was the infeasibility of comprehensive cross-device testing due to severe instability in the User Interface (UI). Specifically, environments like Firefox exhibited significantly slower performance and often rendered certain elements unclickable, preventing test completion and requiring explicit technical mitigation. Dynamic content loading was also challenging due to occasional page loads exceeding 36 seconds, which exceeded standard timeout protocols. These issues were mitigated by implementing aggressive interaction settings and leveraging explicit wait conditions for selectors and visual confirmation of elements before proceeding. Additionally, confirming the data segregation failure without backend access was critical. I addressed this by cross-referencing the displayed data in the Reconciliation UI with the raw API response in the Network tab, confirming the server-side failure.
----
-
-## Tools and Techniques Employed
-
-Playwright with TypeScript was the primary framework used for the end-to-end automation of the GoQuant system. Playwright was chosen for its modern cross-browser testing capabilities, powerful synchronization management, and support for parallel execution, which allowed the test suite to run efficiently across multiple environments. Visual Studio Code was used as the integrated development environment for writing, executing, and debugging scripts, while GitHub was utilized for version control and repository management.  
-
-The automation relied heavily on advanced Playwright locators, particularly XPath and data-testid-based selectors, to handle dynamic UI components. Several modules required the use of `force: true` during click actions to bypass intermittent issues where elements were visible but not interactable due to frontend rendering delays. Explicit waits and assertions were incorporated to ensure each test action was executed only after the UI reached a stable state.  
-
-Each automation script was structured using the Page Object Model, where reusable methods represented user actions such as login, navigation, exchange addition, deletion, order placement, and reconciliation verification. This modular approach not only improved readability and maintainability but also allowed for rapid debugging and efficient updates when UI changes occurred.  
-
-The Playwright test runner was configured to capture screenshots and generate HTML reports for each run, allowing detailed analysis of failure points. Network traces and console logs were reviewed for each failed test case to determine whether the issue originated from the frontend, backend, or automation timing. Through this process, the automation coverage was comprehensive, and system performance under automation conditions was effectively validated.
-
----
-
-## Challenges Encountered and Solutions Implemented
-
-During the test cycle, several automation-specific challenges were encountered that required adaptive handling. One of the most persistent issues was the instability of dropdown menus, which often failed to remain open long enough for selection. This caused multiple test cases involving exchange selection, account addition, and settings configuration to fail intermittently. To overcome this, forced interactions were applied, and explicit waits were introduced to synchronize UI readiness before performing actions.  
-
-Another major challenge involved inconsistent backend synchronization during account addition and order placement. While the UI reflected successful completion, API responses were delayed or inconsistent, causing validation steps to fail. This behavior led to discrepancies between expected and observed states during test assertions. The issue was mitigated by increasing wait durations, introducing `waitForSelector()` validations, and rechecking API status before proceeding to subsequent test steps.  
-
-Order placement was particularly affected by backend delays and unresponsive UI elements. In several runs, orders could not be placed successfully even when input values were valid. The automation was enhanced to include multiple validation layers that checked order submission confirmation and subsequent reflection in the Order Book and Order History sections.  
-
-GoOps wallet and reconciliation modules also exhibited synchronization issues, where UI updates lagged behind backend responses, resulting in inaccurate validation of wallet balances and reconciliation entries. Although this issue was beyond the scope of frontend automation fixes, enhanced waits and validation conditions were added to improve script reliability.  
-
-Finally, within the Settings module, hover-based dropdowns frequently caused failed interactions as they collapsed before selection actions were completed. Playwright’s hover actions and event listeners were implemented to maintain focus during interaction, increasing test consistency. These adjustments collectively improved overall test stability, even under dynamic and asynchronous system conditions.
 
 ---
 
