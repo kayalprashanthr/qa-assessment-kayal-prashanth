@@ -56,3 +56,50 @@ Finally, within the Settings module, hover-based dropdowns frequently caused fai
 
 ---
 
+## Detailed Findings
+
+**CRIT-001: Add multiple exchange accounts with API credentials**
+
+**Severity:** Critical  
+**Browser:** All  
+**Description:** Adding an account is inconsistent — sometimes it succeeds, sometimes it throws an error.
+
+**Steps to Reproduce:**  
+1. Log in and go to **Admin → Add Exchange**  
+2. Add **OKX** with valid API key and secret  
+3. Repeat for **Binance USDM** and **Binance CoinM**  
+4. Observe whether each account is added successfully  
+
+**Expected Behavior:**  
+All exchanges should be added successfully, each showing the status “Connected to the exchange” with no error messages.  
+
+**Actual Behavior:**  
+Using the same credentials, account addition sometimes succeeds and sometimes fails with the error “UDP Server Error.”.Previously added accounts show the status “Can’t communicate with exchanges.”
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1Zj0Sfntaw2R1i9E2447B7Ia0ANFasS7i/view?usp=sharing)
+
+**CRIT-002: Trade on GoTrade using Binance USD-M.**
+
+**Severity:** Critical  
+**Browser:** All  
+**Description:** Perform trades on GoTrade using Binance USD-M with different trade types and symbols.
+
+**Steps to Reproduce:**  
+1. Navigate to GoTrade page
+2. Switch to Binance USD-M exchange
+3. Select a symbol (e.g., BTC)
+4. Place a Market Edge trade
+5. Repeat steps with other symbols and trade types 
+
+**Expected Behavior:**  
+All trades should be executed successfully for different symbols.  
+
+**Actual Behavior:**  
+Inconsistent behavior — some trades execute successfully, while others fail with server error.
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1e1cfFkKazFQNRh9FKWMCjxwtkk-QMpVk/view?usp=sharing)
+
+
+
