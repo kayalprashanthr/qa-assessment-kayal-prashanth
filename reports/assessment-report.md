@@ -149,7 +149,7 @@ Trades are not executed even though a pop-up displays “Order Accepted".
 **Evidence:**  
 [Screen Recording](https://drive.google.com/file/d/1fYUNPs5UwdbLAkxEVaxVUnEHvGnrKylM/view?usp=sharing)
 
-**CRIT-005: Reconciliation Order History on GoOps.**
+**CRIT-005: Reconciliation Order History on GoOps**
 
 **Severity:** Critical  
 **Browser:** All  
@@ -172,7 +172,7 @@ Reconciliation page displays other user order history instead of current user’
 
 ### High Priority Issues
 
-** HIGH-001: Modify existing exchange account**
+**HIGH-001: Modify existing exchange account**
 
 **Severity:** High  
 **Browser:** All  
@@ -194,7 +194,7 @@ Trades are not executed even though a pop-up displays “Order Accepted".
 **Evidence:**  
 [Screen Recording](https://drive.google.com/file/d/1fYUNPs5UwdbLAkxEVaxVUnEHvGnrKylM/view?usp=sharing)
 
-** HIGH-002: View OKX trades in Order History.**
+**HIGH-002: View OKX trades in Order History**
 
 **Severity:** High  
 **Browser:** All 
@@ -216,7 +216,7 @@ OKX trades are not displayed in Order History.
 **Evidence:**  
 [Screen Recording](https://drive.google.com/file/d/1fYUNPs5UwdbLAkxEVaxVUnEHvGnrKylM/view?usp=sharing)
 
-** HIGH-003: View Binance USD-M trades in Order History**
+**HIGH-003: View Binance USD-M trades in Order History**
 
 **Severity:** High  
 **Browser:** All 
@@ -238,7 +238,7 @@ Binance USD-M trades are not displayed in Order History.
 **Evidence:**  
 [Screen Recording](https://drive.google.com/file/d/1e1cfFkKazFQNRh9FKWMCjxwtkk-QMpVk/view?usp=sharing)
 
-** HIGH-004: View Binance Coin-M trades in Order History**
+**HIGH-004: View Binance Coin-M trades in Order History**
 
 **Severity:** High  
 **Browser:** All 
@@ -260,7 +260,7 @@ Binance Coin-M trades are not displayed in Order History.
 **Evidence:**  
 [Screen Recording](https://drive.google.com/file/d/1peHtAkeAQ7k8_aLuh7HYVpNqxWXlGYar/view?usp=sharing)
 
-** HIGH-005: Cancel `In Progress` order from Waiting Orders**
+**HIGH-005: Cancel `In Progress` order from Waiting Orders**
 
 **Severity:** High  
 **Browser:** All 
@@ -283,7 +283,7 @@ Popup appeared showing “Order Cancelled”, but the order status in the list r
 
 ### Medium Priority Issues
 
-** MED-001: Check Order Book for selected OKX symbol**
+**MED-001: Check Order Book for selected OKX symbol**
 
 **Severity:** High  
 **Browser:** All 
@@ -304,7 +304,7 @@ Order Book data not displayed for certain symbols; inconsistent data load observ
 **Evidence:**  
 [Screen Recording](https://drive.google.com/file/d/1Q9Rsw9gly_eVw7sff6IkrpZpLZ9yzMMG/view?usp=sharing)
 
-** MED-002: Check Order Book for selected Binance USDM symbol**
+**MED-002: Check Order Book for selected Binance USDM symbol**
 
 **Severity:** High  
 **Browser:** All 
@@ -325,7 +325,7 @@ Order Book data not displayed for certain symbols; inconsistent data load observ
 **Evidence:**  
 [Screen Recording](https://drive.google.com/file/d/16CD7Me7K825rO62baDRzMdLu99_-TKPb/view?usp=sharing)
 
-** MED-003: Check Order Book for selected Binance Coin-M symbol**
+**MED-003: Check Order Book for selected Binance Coin-M symbol**
 
 **Severity:** High  
 **Browser:** All 
@@ -348,7 +348,7 @@ Order Book data not displayed for certain symbols; inconsistent data load observ
 
 ###  Low Priority Issues
 
-** LOW-001: Test Shortcut Categories with valid and invalid keys**
+**LOW-001: Test Shortcut Categories with valid and invalid keys**
 
 **Severity:** Low  
 **Browser:** All 
