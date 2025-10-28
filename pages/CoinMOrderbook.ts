@@ -24,7 +24,7 @@ export class CoinMOrderbook{
         await this.page.keyboard.press('Enter');
         for (const option of optionElements) {
             const rawText = await option.textContent();
-            const text = rawText?.trim()?.replace(/Spot$/, '').trim();
+            const text = rawText?.trim()?.replace(/COINM Perpetuals$/, '').trim();
             if (text) optionTexts.push(text);
             }
             console.log(`Found ${optionTexts.length} symbols`);

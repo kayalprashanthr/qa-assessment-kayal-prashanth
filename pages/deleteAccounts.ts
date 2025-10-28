@@ -12,6 +12,9 @@ export class deleteAccounts{
     async accDelete(){
         await this.page.click(this.accounts);
         await this.page.click(this.admin);
-
+        await this.page.click("(//button[text()='Delete'])[3]");
+        await this.page.fill("//input[@data-testid='delete-account-dialog-delete-confirmation']","DELETE");
+        await this.page.click("//button[@data-testid='delete-account-dialog-delete']");
+        await this.page.waitForTimeout(10000)
     }
 }

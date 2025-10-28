@@ -1,0 +1,83 @@
+{
+  "cookies": [
+    {
+      "name": "wagmi.store",
+      "value": "{\"state\":{\"connections\":{\"__type\":\"Map\",\"value\":[]},\"chainId\":1,\"current\":null},\"version\":2}",
+      "domain": "test1.gotrade.goquant.io",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__cf_bm",
+      "value": "USUii3HHZBG61mL6vThUDEkmg3hJrUijjuOEakMlyfw-1761640561-1.0.1.1-YUE.R6jsmmfvKjUwh7nl1Ir2Kxx6J2V56HcYe88SRgHBqWtaBYX80X7FRIylNv0zCVhRvXsTuF4uN55F_4wpm7uojqnC66KLLUmF1PZ6BXE",
+      "domain": ".coinbase.com",
+      "path": "/",
+      "expires": 1761642357.54788,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "_cfuvid",
+      "value": "Y8AZGABrKrsiMhl7eSSgHAG2_bbTsgQQTEqraxKQS_8-1761640561006-0.0.1.1-604800000",
+      "domain": ".coinbase.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "__cf_bm",
+      "value": "rTu56Yoel7AjhcrhQQEeMpgvzK4Dix39w9MNEezOKXY-1761640577-1.0.1.1-F5aukMJJ2mjspwOetoVDE9O6w1heH91cQvdcu7zLMwS6rgCf2_92TzQ_Y9rLerDyo4GokTfvo8ENlEHdEl3sjOW6Ac0p_oVThJLGo5B7VzM",
+      "domain": ".okx.com",
+      "path": "/",
+      "expires": 1761642374.355009,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://test1.gotrade.goquant.io",
+      "localStorage": [
+        {
+          "name": "@appkit/connection_status",
+          "value": "disconnected"
+        },
+        {
+          "name": "Accounts",
+          "value": "{\"state\":{\"favoriteAccount\":null,\"selectedExchange\":[]},\"version\":0}"
+        },
+        {
+          "name": "user",
+          "value": "{\"state\":{\"email\":\"user10@goquant.io\",\"role\":\"user\",\"authRedirectCode\":\"\",\"accessToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMTBAZ29xdWFudC5pbyIsImV4cCI6MTc2MjI0NTM3MCwicm9sZSI6InVzZXIiLCJpZCI6MTF9.iIBfmQNzVaQAKceNLDUzBi1fhf5-hsZrvBBuTSGBuVw\",\"onboardingStage\":\"Finish\",\"soundEnabled\":true,\"masterVolume\":80,\"expiryTime\":1762245370,\"dontShowLiquidatePositions\":false,\"dontShowCancelOrders\":false,\"dontShowKillEdge\":false,\"sorConsentAccepted\":false,\"isTradeTicketMode\":false},\"version\":0}"
+        },
+        {
+          "name": "Exchange",
+          "value": "{\"state\":{\"accountsData\":{\"OKX\":{\"4009c300-240e-44d6-beb9-95e637c42c6f\":{\"accountName\":\"DemoTestOKX\",\"accountId\":\"4009c300-240e-44d6-beb9-95e637c42c6f\",\"accountStatus\":\"Disabled\",\"isTestnet\":true,\"sorActivated\":false,\"accountMode\":\"\"}},\"DERIBIT\":{},\"BYBIT\":{},\"BINANCESPOT\":{},\"BINANCEUSDM\":{\"7a84c99d-a90f-44c4-8d54-e349cea0bf8f\":{\"accountName\":\"DemoTestUSDM\",\"accountId\":\"7a84c99d-a90f-44c4-8d54-e349cea0bf8f\",\"accountStatus\":\"Disabled\",\"isTestnet\":true,\"sorActivated\":false,\"accountMode\":\"\"}},\"BINANCECOINM\":{\"3d38c8c3-570b-44d2-9c5f-409b9f4ac5a0\":{\"accountName\":\"DemoTestCoinM\",\"accountId\":\"3d38c8c3-570b-44d2-9c5f-409b9f4ac5a0\",\"accountStatus\":\"Active\",\"isTestnet\":true,\"sorActivated\":false,\"accountMode\":\"\"}},\"BINANCEOPTIONS\":{},\"CRYPTOCOM\":{},\"GSR\":{},\"BITMEX\":{},\"BITFINEX\":{},\"MEXCSPOT\":{},\"MEXCFUTURE\":{},\"GEMINI\":{},\"GATEIO\":{},\"KRAKENSPOT\":{},\"KRAKENFUTURES\":{},\"KUCOINSPOT\":{},\"KUCOINFUTURES\":{},\"BITSTAMP\":{},\"STILLMAN\":{},\"HYPERLIQUID\":{},\"BITSO\":{},\"NEXCHANGE\":{},\"HERCLE\":{},\"SIMULATOR\":{},\"GODARK\":{},\"BLOFIN\":{}},\"exchanges\":[\"MEXCSPOT\",\"KUCOINSPOT\",\"KUCOINFUTURES\",\"GSR\",\"HYPERLIQUID\",\"BITMEX\",\"BYBIT\",\"DERIBIT\",\"STILLMAN\",\"OKX\",\"BINANCEUSDM\",\"BINANCECOINM\",\"NEXCHANGE\",\"BLOFIN\",\"GODARK\",\"HERCLE\"],\"totalAccountsCount\":3,\"binanceTypes\":[\"SPOT\",\"USDM\",\"COINM\",\"OPTIONS\"],\"mexcTypes\":[\"SPOT\",\"FUTURES\"],\"krakenTypes\":[\"SPOT\",\"FUTURES\"],\"accounts\":{\"OKX\":[{\"accountId\":\"4009c300-240e-44d6-beb9-95e637c42c6f\",\"accountName\":\"DemoTestOKX\",\"accountStatus\":\"Active\",\"sorActivated\":false,\"accountMode\":\"\"}],\"DERIBIT\":[],\"BYBIT\":[],\"BINANCESPOT\":[],\"BINANCEUSDM\":[{\"accountId\":\"7a84c99d-a90f-44c4-8d54-e349cea0bf8f\",\"accountName\":\"DemoTestUSDM\",\"accountStatus\":\"Active\",\"sorActivated\":false,\"accountMode\":\"\"}],\"BINANCECOINM\":[{\"accountId\":\"3d38c8c3-570b-44d2-9c5f-409b9f4ac5a0\",\"accountName\":\"DemoTestCoinM\",\"accountStatus\":\"Active\",\"sorActivated\":false,\"accountMode\":\"\"}],\"BINANCEOPTIONS\":[],\"CRYPTOCOM\":[],\"GSR\":[],\"BITMEX\":[],\"BITFINEX\":[],\"MEXCSPOT\":[],\"MEXCFUTURE\":[],\"GEMINI\":[],\"GATEIO\":[],\"KRAKENSPOT\":[],\"KRAKENFUTURES\":[],\"KUCOINSPOT\":[],\"KUCOINFUTURES\":[],\"BITSTAMP\":[],\"STILLMAN\":[],\"HYPERLIQUID\":[],\"BITSO\":[],\"NEXCHANGE\":[],\"HERCLE\":[],\"SIMULATOR\":[],\"GODARK\":[],\"BLOFIN\":[]},\"tradedExchange\":\"OKX\",\"selectedAccount\":{\"accountName\":\"DemoTestOKX\",\"accountId\":\"4009c300-240e-44d6-beb9-95e637c42c6f\"},\"selectedAccounts\":[{\"exchange\":\"BINANCECOINM\",\"account\":{\"accountId\":\"3d38c8c3-570b-44d2-9c5f-409b9f4ac5a0\",\"accountName\":\"DemoTestCoinM\"}},{\"exchange\":\"BINANCEUSDM\",\"account\":{\"accountId\":\"7a84c99d-a90f-44c4-8d54-e349cea0bf8f\",\"accountName\":\"DemoTestUSDM\"}},{\"exchange\":\"OKX\",\"account\":{\"accountId\":\"4009c300-240e-44d6-beb9-95e637c42c6f\",\"accountName\":\"DemoTestOKX\"}}],\"optionChainExchanges\":[\"OKX\",\"DERIBIT\"],\"sorActivated\":false,\"modifiedAccounts\":false},\"version\":0}"
+        },
+        {
+          "name": "@appkit/active_namespace",
+          "value": "eip155"
+        },
+        {
+          "name": "cbwsdk.store",
+          "value": "{\"state\":{\"chains\":[],\"keys\":{},\"account\":{},\"spendPermissions\":[],\"config\":{\"version\":\"4.3.6\",\"metadata\":{\"appName\":\"Dapp\",\"appLogoUrl\":\"\",\"appChainIds\":[1,137,42161,10,8453,43114,56]},\"preference\":{\"options\":\"all\"},\"deviceId\":\"cfd777c7-df84-4d62-ad3b-52eba1230e9e\"}},\"version\":0}"
+        },
+        {
+          "name": "@appkit/disconnected_connector_ids",
+          "value": "{\"eip155\":[\"\"],\"solana\":[\"\"],\"bip122\":[\"\"]}"
+        },
+        {
+          "name": "@appkit/active_caip_network_id",
+          "value": "eip155:1"
+        }
+      ]
+    }
+  ]
+}

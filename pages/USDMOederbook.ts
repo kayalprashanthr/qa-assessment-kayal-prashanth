@@ -24,7 +24,7 @@ export class USDMOrderbook{
         await this.page.keyboard.press('Enter');
         for (const option of optionElements) {
             const rawText = await option.textContent();
-            const text = rawText?.trim()?.replace(/Spot$/, '').trim();
+            const text = rawText?.trim()?.replace(/USDM Perpetuals$/, '').trim();
             if (text) optionTexts.push(text);
             }
             console.log(`Found ${optionTexts.length} symbols`);
@@ -38,7 +38,7 @@ export class USDMOrderbook{
                 await comboBox.fill(text);
                 await this.page.keyboard.press('Enter');
                 // Wait for orderbook load
-                await this.page.waitForTimeout(2000);
+                await this.page.waitForTimeout(4000);
                 const orderBook = this.page.locator("//div[@data-testid='orderbook']").nth(1);
                 const isVisible = await orderBook.isVisible();
                 console.log(isVisible ? `OrderBook Visible for: ${text}` : `Not Loaded for: ${text}`);

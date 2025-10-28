@@ -21,6 +21,10 @@ export class addAccounts{
         await this.page.click("//button[@role='switch']");
         await this.page.click("(//button[text()='Add Account'])[2]");
         await this.page.waitForTimeout(10000);
+        const closeBtn = this.page.locator("//span[text()='Close']");
+        if (await closeBtn.isVisible()) {
+            await closeBtn.click({ force: true });
+        }
     }
     async addAccUSDM(USDMName:string, USDMKey:string, USDMSecret:string){
         //For Binance USD-M
@@ -34,6 +38,10 @@ export class addAccounts{
         await this.page.click("//button[@role='switch']");
         await this.page.click("(//button[text()='Add Account'])[2]");
         await this.page.waitForTimeout(10000);
+        const closeBtn = this.page.locator("//span[text()='Close']");
+        if (await closeBtn.isVisible()) {
+            await closeBtn.click({ force: true });
+        }
     }
     async addAccCoinM(CoinMName:string, CoinMKey:string, CoinMSecret:string){
         await this.page.click("//button[text()='Add Account']");
@@ -46,5 +54,9 @@ export class addAccounts{
         await this.page.click("//button[@role='switch']");
         await this.page.click("(//button[text()='Add Account'])[2]");
         await this.page.waitForTimeout(10000);
+        const closeBtn = this.page.locator("//span[text()='Close']");
+        if (await closeBtn.isVisible()) {
+            await closeBtn.click({ force: true });
+        }
     }
 }
