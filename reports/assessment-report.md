@@ -46,7 +46,7 @@ The Playwright test runner was configured to capture screenshots and generate HT
 
 During the test cycle, several automation-specific challenges were encountered that required adaptive handling. One of the most persistent issues was the instability of dropdown menus, which often failed to remain open long enough for selection. This caused multiple test cases involving exchange selection, account addition, and settings configuration to fail intermittently. To overcome this, forced interactions were applied, and explicit waits were introduced to synchronize UI readiness before performing actions.  
 
-Another major challenge involved inconsistent backend synchronization during account addition and order placement. While the UI reflected successful completion, API responses were delayed or inconsistent, causing validation steps to fail. This behavior led to discrepancies between expected and observed states during test assertions. The issue was mitigated by increasing wait durations, introducing `waitForResponse()` validations, and rechecking API status before proceeding to subsequent test steps.  
+Another major challenge involved inconsistent backend synchronization during account addition and order placement. While the UI reflected successful completion, API responses were delayed or inconsistent, causing validation steps to fail. This behavior led to discrepancies between expected and observed states during test assertions. The issue was mitigated by increasing wait durations, introducing `waitForSelector()` validations, and rechecking API status before proceeding to subsequent test steps.  
 
 Order placement was particularly affected by backend delays and unresponsive UI elements. In several runs, orders could not be placed successfully even when input values were valid. The automation was enhanced to include multiple validation layers that checked order submission confirmation and subsequent reflection in the Order Book and Order History sections.  
 
@@ -57,6 +57,8 @@ Finally, within the Settings module, hover-based dropdowns frequently caused fai
 ---
 
 ## Detailed Findings
+
+### Critical Issues
 
 **CRIT-001: Add multiple exchange accounts with API credentials**
 
