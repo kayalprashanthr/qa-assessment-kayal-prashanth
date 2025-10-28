@@ -2,7 +2,7 @@
 
 **Application Under Test:** GoQuant – Exchange Management System  
 **Test Period:** October 22–27, 2025  
-**Tester:** Yal  
+**Tester:** Kayal Prashanth R  
 **Testing Framework:** Playwright with TypeScript  
 **Browsers Tested:** Chromium, Firefox, WebKit  
 
@@ -10,13 +10,13 @@
 
 ## Executive Summary
 
-This report summarizes the findings from an intensive 5-day manual testing phase focused on assessing the functional stability and user readiness of the core web application. The scope included critical user workflows such as Authentication, Order Placement (GoTrade), Accounts Management, Groups, and the Settings module. Throughout this period, 21 strategic test cases were executed, adopting a concentrated, end-user perspective to validate the reliability of major application interactions and key business scenarios.
+This report summarizes the findings from an intensive 5-day manual testing phase focused on assessing the functional stability and user readiness of the core web application. The scope included critical user workflows such as Authentication, Order Placement, Accounts Management, GoOps, and the Settings module. Throughout this period, 21 strategic test cases were executed, adopting a concentrated, end-user perspective to validate the reliability of major application interactions and key business scenarios.
 
 The overall assessment indicates significant concerns regarding the application's readiness for a production environment. Only 7 of the 21 executed test cases passed validation, resulting in a high failure rate of 67%. This outcome reveals systemic instability across foundational application components. A total of 14 distinct defects were identified across all severity levels, underscoring the immediate requirement for a focused stabilization effort. Separately, detailed Boundary Validation testing was also successfully conducted, with all findings and specific data points formally recorded for developer review in the accompanying Workbook Reports.
 
 The most concerning discoveries include catastrophic failure in core platform capabilities, with 5 Critical issues identified. These critical defects span key functional areas: the inconsistent ability to add essential external exchange accounts, fundamental failures in trade execution across all major integrated exchanges, and a severe data segregation failure where users view other customers’ private order history. The testing also identified an additional 5 High-Priority concerns, 3 Medium-Priority concerns, and 1 Low-Priority cosmetic issue, highlighting pervasive quality challenges.
 
-The trading platform's core business logic is severely compromised, showing failures where orders are not executed despite the user interface confirming “Order Accepted,” alongside critical communication errors during the API credential setup process. This concentration of critical and high-priority issues demonstrates that the application is not merely buggy, but fundamentally unstable, posing significant risk to user trust and data integrity. Furthermore, while the test environment stability was actively monitored, intermittent connectivity issues (e.g., delayed API responses) were observed, which require further environment-specific troubleshooting.
+The trading platform's core business logic is severely compromised, showing failures where orders are not executed despite the user interface confirming Order Accepted alongside critical communication errors during the API credential setup process. This concentration of critical and high-priority issues demonstrates that the application is not merely buggy, but fundamentally unstable, posing significant risk to user trust and data integrity. Furthermore, while the test environment stability was actively monitored, intermittent connectivity issues (e.g., delayed API responses) were observed, which require further environment-specific troubleshooting.
 
 My primary recommendation is that a production release be deferred until all 5 Critical and 5 High-Priority issues are fully resolved and successfully verified through a formal re-test cycle, focusing on Authentication security and transactional data integrity. Moving forward, I recommend implementing a more robust testing strategy that includes comprehensive Load Testing to evaluate stability under high transaction volume and dedicated Security Audits to protect sensitive user and trading data.  
 
@@ -193,3 +193,177 @@ Trades are not executed even though a pop-up displays “Order Accepted".
 
 **Evidence:**  
 [Screen Recording](https://drive.google.com/file/d/1fYUNPs5UwdbLAkxEVaxVUnEHvGnrKylM/view?usp=sharing)
+
+** HIGH-002: View OKX trades in Order History.**
+
+**Severity:** High  
+**Browser:** All 
+**Description:**  OKX trades are displays in Order History.
+
+**Steps to Reproduce:**  
+1. Navigate to GoTrade page
+2. Switch to OKX exchange
+3. Place one or more trades (any type) on different symbols
+4. Navigate to Order History
+5. Check if all OKX trades are visible
+
+**Expected Behavior:**  
+All OKX trades should be displayed in Order History with correct symbol, trade type, quantity, and status.  
+
+**Actual Behavior:**  
+OKX trades are not displayed in Order History.
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1fYUNPs5UwdbLAkxEVaxVUnEHvGnrKylM/view?usp=sharing)
+
+** HIGH-003: View Binance USD-M trades in Order History**
+
+**Severity:** High  
+**Browser:** All 
+**Description:**  Binance USD-M trades are displays in Order History.
+
+**Steps to Reproduce:**  
+1. Navigate to GoTrade page
+2. Switch to Binance USD-M exchange
+3. Place one or more trades (any type) on different symbols
+4. Navigate to Order History
+5. Check if all Binance USD-M trades are visible
+
+**Expected Behavior:**  
+All Binance USD-M trades should be displayed in Order History with correct symbol, trade type, quantity, and status.  
+
+**Actual Behavior:**  
+Binance USD-M trades are not displayed in Order History.
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1e1cfFkKazFQNRh9FKWMCjxwtkk-QMpVk/view?usp=sharing)
+
+** HIGH-004: View Binance Coin-M trades in Order History**
+
+**Severity:** High  
+**Browser:** All 
+**Description:**  Binance Coin-M trades are displays in Order History.
+
+**Steps to Reproduce:**  
+1. Navigate to GoTrade page
+2. Switch to Binance Coin-M exchange
+3. Place one or more trades (any type) on different symbols
+4. Navigate to Order History
+5. Check if all Binance Coin-M trades are visible
+
+**Expected Behavior:**  
+All Binance Coin-M trades should be displayed in Order History with correct symbol, trade type, quantity, and status.  
+
+**Actual Behavior:**  
+Binance Coin-M trades are not displayed in Order History.
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1peHtAkeAQ7k8_aLuh7HYVpNqxWXlGYar/view?usp=sharing)
+
+** HIGH-005: Cancel `In Progress` order from Waiting Orders**
+
+**Severity:** High  
+**Browser:** All 
+**Description:**  User can cancel an `In Progress` order from the Waiting Orders.
+
+**Steps to Reproduce:**  
+1. Navigate to GoTrade → Waiting Orders
+2. Identify an order with status In Progress
+3. Click Cancel on that order
+4. Verify that the order status updates accordingly
+
+**Expected Behavior:**  
+`In Progress` order should be cancelled successfully, and its status should change to “Cancelled” or be removed from the list  
+
+**Actual Behavior:**  
+Popup appeared showing “Order Cancelled”, but the order status in the list remained In Progress
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1NUN3DYyrXkMR56bLe8PaQYGS8WDvG0Gl/view?usp=sharing)
+
+### Medium Priority Issues
+
+** MED-001: Check Order Book for selected OKX symbol**
+
+**Severity:** High  
+**Browser:** All 
+**Description:**  Order Book data is displayed for the selected symbol on OKX exchange.
+
+**Steps to Reproduce:**  
+1. Navigate to GoTrade page
+2. Switch to OKX exchange
+3. Select multiple symbols
+4. Observe the Order Book for each selected symbol
+
+**Expected Behavior:**  
+Order Book should display accurate and real-time buy/sell orders for all selected symbols 
+
+**Actual Behavior:**  
+Order Book data not displayed for certain symbols; inconsistent data load observed
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1Q9Rsw9gly_eVw7sff6IkrpZpLZ9yzMMG/view?usp=sharing)
+
+** MED-002: Check Order Book for selected Binance USDM symbol**
+
+**Severity:** High  
+**Browser:** All 
+**Description:**  Order Book data is displayed for the selected symbol on Binance USDM exchange.
+
+**Steps to Reproduce:**  
+1. Navigate to GoTrade page
+2. Switch to Binance USDM exchange
+3. Select multiple symbols
+4. Observe the Order Book for each selected symbol
+
+**Expected Behavior:**  
+Order Book should display accurate and real-time buy/sell orders for all selected symbols 
+
+**Actual Behavior:**  
+Order Book data not displayed for certain symbols; inconsistent data load observed
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/16CD7Me7K825rO62baDRzMdLu99_-TKPb/view?usp=sharing)
+
+** MED-003: Check Order Book for selected Binance Coin-M symbol**
+
+**Severity:** High  
+**Browser:** All 
+**Description:**  Order Book data is displayed for the selected symbol on Binance Coin-M exchange.
+
+**Steps to Reproduce:**  
+1. Navigate to GoTrade page
+2. Switch to Binance Coin-M exchange
+3. Select multiple symbols
+4. Observe the Order Book for each selected symbol
+
+**Expected Behavior:**  
+Order Book should display accurate and real-time buy/sell orders for all selected symbols 
+
+**Actual Behavior:**  
+Order Book data not displayed for certain symbols; inconsistent data load observed
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1L_qDUZG-qCqP_F0T7vjfzj0DF5pXTJOW/view?usp=sharing)
+
+###  Low Priority Issues
+
+** LOW-001: Test Shortcut Categories with valid and invalid keys**
+
+**Severity:** Low  
+**Browser:** All 
+**Description:**  Shortcut Categories in Settings respond correctly to valid and invalid key combinations.
+
+**Steps to Reproduce:**  
+1. Navigate to Settings → Shortcut Categories
+2. Press Alt + P and observe behavior
+3. Press Shift + P and observe behavior
+
+**Expected Behavior:**  
+Only valid shortcut (Alt + P) should redirect to GoOps page; invalid shortcuts should have no action.
+
+**Actual Behavior:**  
+Both valid (Alt + P) and invalid (Shift + P) shortcuts redirect to GoOps.
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1dA5LjOA7jqs-R2gKXByFJP6bwhHhGWVB/view?usp=sharing)
