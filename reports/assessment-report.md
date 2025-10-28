@@ -98,10 +98,74 @@ Using the same credentials, account addition sometimes succeeds and sometimes fa
 All trades should be executed successfully for different symbols.  
 
 **Actual Behavior:**  
-Inconsistent behavior — some trades execute successfully, while others fail with server error.
+Trades are not executed even though a pop-up displays “Order Accepted,” while others fail with a server error.
 
 **Evidence:**  
 [Screen Recording](https://drive.google.com/file/d/1e1cfFkKazFQNRh9FKWMCjxwtkk-QMpVk/view?usp=sharing)
 
+**CRIT-003: Trade on GoTrade using Binance Coin-M.**
 
+**Severity:** Critical  
+**Browser:** All  
+**Description:** Perform trades on GoTrade using Binance Coin-M with different trade types and symbols.
 
+**Steps to Reproduce:**  
+1. Navigate to GoTrade page
+2. Switch to Binance Coin-M exchange
+3. Select a symbol (e.g., BTC)
+4. Place a Market Edge trade
+5. Repeat steps with other symbols and trade types 
+
+**Expected Behavior:**  
+All trades should be executed successfully for different symbols.  
+
+**Actual Behavior:**  
+Trades are not executed even though a pop-up displays “Order Accepted".
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1peHtAkeAQ7k8_aLuh7HYVpNqxWXlGYar/view?usp=sharing)
+
+**CRIT-004: Trade on GoTrade using OKX.**
+
+**Severity:** Critical  
+**Browser:** All  
+**Description:** Perform trades on GoTrade using OKX with different trade types and symbols.
+
+**Steps to Reproduce:**  
+1. Navigate to GoTrade page
+2. Switch to OKX exchange
+3. Select a symbol (e.g., BTC)
+4. Place a Market Edge trade
+5. Repeat steps with other symbols and trade types 
+
+**Expected Behavior:**  
+All trades should be executed successfully for different symbols.  
+
+**Actual Behavior:**  
+Trades are not executed even though a pop-up displays “Order Accepted".
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1fYUNPs5UwdbLAkxEVaxVUnEHvGnrKylM/view?usp=sharing)
+
+**CRIT-005: Reconciliation Order History on GoOps.**
+
+**Severity:** Critical  
+**Browser:** All  
+**Description:** Reconciliation page shows the correct Order History for the logged-in user.
+
+**Steps to Reproduce:**  
+1. Navigate to GoOps module
+2. Open the Reconciliation page
+3. Observe the list of displayed order histories
+4. Cross-check with user’s actual executed order
+
+**Expected Behavior:**  
+The Reconciliation page should display only the logged-in user’s order history with correct symbol, type, quantity, and status  
+
+**Actual Behavior:**  
+Reconciliation page displays other users’ order history instead of current user’s records.
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1zLuWjiuQPyFD5B6eUw25WP1rZwVyvkDO/view?usp=sharing)
+
+### High Priority Issues
