@@ -32,10 +32,11 @@ export class settingsPage{
         let invalidkey:string = "Shift+R";
         await this.page.waitForTimeout(3000);
         const oldUrl2 = this.page.url();
+        await this.page.waitForTimeout(3000);
         await this.page.keyboard.press(invalidkey);
         await this.page.waitForTimeout(3000);
         const newUrl2 = this.page.url();
-        if (newUrl2 !== oldUrl2) {
+        if (newUrl2 == oldUrl2) {
             console.log("Accepts dublicate keys its a bug");
         } else {
             console.log("Only Mentioned Keys");

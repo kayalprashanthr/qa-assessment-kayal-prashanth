@@ -10,24 +10,51 @@
 
 ## Executive Summary
 
-The GoQuant Exchange Management System underwent a full automation testing cycle between October 22 and October 27, 2025. The purpose of this cycle was to validate end-to-end functionality across critical workflows including user authentication, account addition and deletion, order placement, order history validation, order book accuracy, wallet operations within GoOps, reconciliation modules, and system settings. The entire process was executed using Playwright with TypeScript, focusing exclusively on automated functional and UI validation.  
+This report summarizes the findings from an intensive 5-day manual testing phase focused on assessing the functional stability and user readiness of the core web application. The scope included critical user workflows such as Authentication, Order Placement (GoTrade), Accounts Management, Groups, and the Settings module. Throughout this period, 21 strategic test cases were executed, adopting a concentrated, end-user perspective to validate the reliability of major application interactions and key business scenarios.
 
-A total of twenty-one automated test cases were executed during this assessment period. Out of these, nine test cases passed successfully while twelve failed due to dynamic element instability, inconsistent backend synchronization, and forced interaction dependencies required for dropdown selections and confirmation modals. The testing effort provided deep insight into automation reliability, locator stability, and system responsiveness under different browser environments.  
+The overall assessment indicates significant concerns regarding the application's readiness for a production environment. Only 7 of the 21 executed test cases passed validation, resulting in a high failure rate of 67%. This outcome reveals systemic instability across foundational application components. A total of 14 distinct defects were identified across all severity levels, underscoring the immediate requirement for a focused stabilization effort. Separately, detailed Boundary Validation testing was also successfully conducted, with all findings and specific data points formally recorded for developer review in the accompanying Workbook Reports.
 
-Overall, the application demonstrated consistent performance in authentication, navigation, and UI rendering, with most failures concentrated in dropdown handling, order placement flows, and inconsistent API response timing. The results of this test cycle highlight the strengths of the system in core stability while also identifying specific technical challenges that need to be addressed to ensure more predictable automation outcomes in future test executions.  
+The most concerning discoveries include catastrophic failure in core platform capabilities, with 5 Critical issues identified. These critical defects span key functional areas: the inconsistent ability to add essential external exchange accounts, fundamental failures in trade execution across all major integrated exchanges, and a severe data segregation failure where users view other customers’ private order history. The testing also identified an additional 5 High-Priority concerns, 3 Medium-Priority concerns, and 1 Low-Priority cosmetic issue, highlighting pervasive quality challenges.
+
+The trading platform's core business logic is severely compromised, showing failures where orders are not executed despite the user interface confirming “Order Accepted,” alongside critical communication errors during the API credential setup process. This concentration of critical and high-priority issues demonstrates that the application is not merely buggy, but fundamentally unstable, posing significant risk to user trust and data integrity. Furthermore, while the test environment stability was actively monitored, intermittent connectivity issues (e.g., delayed API responses) were observed, which require further environment-specific troubleshooting.
+
+My primary recommendation is that a production release be deferred until all 5 Critical and 5 High-Priority issues are fully resolved and successfully verified through a formal re-test cycle, focusing on Authentication security and transactional data integrity. Moving forward, I recommend implementing a more robust testing strategy that includes comprehensive Load Testing to evaluate stability under high transaction volume and dedicated Security Audits to protect sensitive user and trading data.  
 
 ---
 
 ## Testing Methodology
 
-The testing process was completely automated using Playwright integrated with TypeScript. The Page Object Model (POM) design pattern was implemented to structure automation scripts efficiently, ensuring that each module of the GoQuant system was represented as an independent, reusable class. The tests were written and executed entirely through Visual Studio Code, and all results were managed within the GitHub repository to maintain traceability and version control.  
+## Testing Approach
 
-Each test case was developed to replicate real user behavior across the system. The automation covered key modules including login authentication, exchange account addition and deletion, order placement, order book and order history validation, GoOps wallet verification, reconciliation confirmation, and settings configuration. Test cases simulated user journeys through the Admin dashboard, GoTrade, and GoOps environments to ensure seamless functionality between interconnected components.  
+I employed a comprehensive risk-based testing strategy that prioritized the most critical user journeys and potential failure points within the core application, specifically targeting components tied to financial transactions and external API communication. This approach was designed to maximize the discovery of high-impact issues while ensuring efficient use of the 5-day testing window. The methodology was structured around three distinct phases, each building upon the previous phase's findings.
 
-The test design emphasized accurate locator usage with robust synchronization handling. In scenarios involving dynamic dropdowns or slow UI rendering, explicit waits were applied, and force clicks were implemented where element stability was unreliable. Additionally, certain test cases used controlled delays and assertions based on visibility and text validation to confirm the accurate rendering of UI elements after asynchronous operations.  
+The first phase consisted of Smoke Testing, which served as a foundation to verify that core functionalities like user login, module navigation, and basic API connectivity were operational. This phase included fundamental checks to quickly identify any show-stopping issues that would prevent further functional testing.
 
-All tests were executed across Chromium, Firefox, and WebKit browsers to confirm multi-browser compatibility. Execution results were reviewed after each run to evaluate both success rates and script reliability. Traces and video recordings generated by Playwright were analyzed to identify failure points, confirm synchronization gaps, and validate backend behavior against frontend actions. The complete execution was designed to mirror actual user workflows as closely as possible while ensuring automation consistency and precision.
+The second phase involved Comprehensive Functional Testing, where I systematically validated all user workflows and business logic. This phase examined the complete user journey from authentication through order placement, including adding and deleting exchange accounts, order execution, verifying order history, reconciliation data, and wallet transactions. I paid particular attention to state management and the application's behavior under normal operating conditions.
 
+The final phase focused on Edge Case and Boundary Testing. Here, I deliberately stressed the application with scenarios like invalid API keys, attempts to modify accounts with corrupted parameters, and performing rapid, successive actions. This was done to check how the application handled unexpected or rapid user actions that could reveal underlying architectural weaknesses or integration failure points.
+
+## Test Case Selection Rationale and In-Depth Analysis
+
+The selection of the 21 distinct test cases was driven by a thorough risk assessment, considering both high business impact (potential financial loss) and technical complexity (external API reliance). The cases were organized into primary categories addressing specific aspects of application quality.
+
+Authentication and Accounts Management tests were prioritized as the highest risk due to the sensitive nature of external API credentials. I designed cases to validate successful linking and deletion, which immediately revealed the critical API connection inconsistencies and the backend function parameter mismatch when attempting modifications.
+
+Order Execution and Data Integrity received the most comprehensive test coverage, examining execution across all integrated exchanges and the subsequent reflection in Order History. This category proved instrumental in discovering the critical trade failures where the UI confirmed “Order Accepted,” but the execution failed due to UDP Server Errors or subsequent data synchronization issues.
+
+Data Segregation and Reconciliation tests focused on the integrity and security of user data. This validation confirmed the severe data exposure issue where the reconciliation API returned entries belonging to multiple User IDs, indicating a fundamental server-side filtering failure.
+
+## Tools and Techniques Employed
+
+The foundation of the testing was a Black Box Manual Testing approach to accurately replicate genuine user interaction across all target environments. For detailed observation and technical logging, I actively leveraged Browser Developer Tools, specifically the Console and Network tabs, on a continuous basis. This method allowed for the capture of crucial technical evidence, including specific HTTP error codes, the raw API response payloads, and WebSocket stream failures for the Order Book.
+
+The overall test design and documentation utilized principles from modern automation practices, including TypeScript, Playwright, and the Page Object Model structure. This knowledge ensured that all manual steps were organized, repeatable, and easily translatable for future automation efforts. All technical evidence, screen recordings, and defect commentary were meticulously aggregated in the accompanying Workbook Reports.
+
+## Challenges Encountered and Solutions Implemented
+
+Throughout the testing process, I encountered several technical challenges that required focused investigation and demonstrated the complexity of testing modern web applications and external integrations.
+
+A major constraint was the infeasibility of comprehensive cross-device testing due to severe instability in the User Interface (UI). Specifically, environments like Firefox exhibited significantly slower performance and often rendered certain elements unclickable, preventing test completion and requiring explicit technical mitigation. Dynamic content loading was also challenging due to occasional page loads exceeding 36 seconds, which exceeded standard timeout protocols. These issues were mitigated by implementing aggressive interaction settings and leveraging explicit wait conditions for selectors and visual confirmation of elements before proceeding. Additionally, confirming the data segregation failure without backend access was critical. I addressed this by cross-referencing the displayed data in the Reconciliation UI with the raw API response in the Network tab, confirming the server-side failure.
 ---
 
 ## Tools and Techniques Employed
@@ -163,9 +190,31 @@ Trades are not executed even though a pop-up displays “Order Accepted".
 The Reconciliation page should display only the logged-in user’s order history with correct symbol, type, quantity, and status  
 
 **Actual Behavior:**  
-Reconciliation page displays other users’ order history instead of current user’s records.
+Reconciliation page displays other user order history instead of current user’s records.
 
 **Evidence:**  
 [Screen Recording](https://drive.google.com/file/d/1zLuWjiuQPyFD5B6eUw25WP1rZwVyvkDO/view?usp=sharing)
 
 ### High Priority Issues
+
+** HIGH-001: Modify existing exchange account**
+
+**Severity:** High  
+**Browser:** All  
+**Description:** User can modify API secrets of an existing exchange account.
+
+**Steps to Reproduce:**  
+1. Navigate to Accounts → Admin
+2. Select an existing connected account
+3. Click Modify
+4. Update API Secret Key
+5. Save the changes
+
+**Expected Behavior:**  
+All trades should be executed successfully for different symbols.  
+
+**Actual Behavior:**  
+Trades are not executed even though a pop-up displays “Order Accepted".
+
+**Evidence:**  
+[Screen Recording](https://drive.google.com/file/d/1fYUNPs5UwdbLAkxEVaxVUnEHvGnrKylM/view?usp=sharing)

@@ -35,7 +35,7 @@ export class accountModify{
         if(errorStatusPopup?.trim()==modifyStatusPopup?.trim()){
             console.log("Unable to modify Accounts");
         }else{
-            console.log("No error in modify")
+            console.log("No error in modify");
         }
     }
 }
