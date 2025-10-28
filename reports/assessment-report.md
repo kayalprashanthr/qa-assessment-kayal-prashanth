@@ -1,65 +1,58 @@
-# Test Report: GoQuant Exchange Management System
+# GoQuant Test Report
 
 **Application Under Test:** GoQuant – Exchange Management System  
-**Test Period:** October 20–27, 2025  
-**Tester:** Kayal Prashanth R  
+**Test Period:** October 22–27, 2025  
+**Tester:** Yal  
 **Testing Framework:** Playwright with TypeScript  
-**Browsers Tested:** Chromium 118.0, Firefox 119.0, WebKit 17.0  
+**Browsers Tested:** Chromium, Firefox, WebKit  
 
 ---
 
 ## Executive Summary
 
-This report presents the findings from comprehensive automated testing of the GoQuant Exchange Management System conducted over a 5 days testing period. During this time, a total of 21 test cases were executed, covering functional validation, user interface testing, and integration verification across major system components.
+The GoQuant Exchange Management System underwent a full automation testing cycle between October 22 and October 27, 2025. The purpose of this cycle was to validate end-to-end functionality across critical workflows including user authentication, account addition and deletion, order placement, order history validation, order book accuracy, wallet operations within GoOps, reconciliation modules, and system settings. The entire process was executed using Playwright with TypeScript, focusing exclusively on automated functional and UI validation.  
 
-The testing outcomes indicate that 9 test cases passed successfully, while 12 failed due to issues primarily related to synchronization timing, dropdown interaction responsiveness, and exchange account deletion verification. These results highlight that while core functionalities such as login authentication and exchange listing are stable, improvements are needed in system consistency during dynamic UI updates.
+A total of twenty-one automated test cases were executed during this assessment period. Out of these, nine test cases passed successfully while twelve failed due to dynamic element instability, inconsistent backend synchronization, and forced interaction dependencies required for dropdown selections and confirmation modals. The testing effort provided deep insight into automation reliability, locator stability, and system responsiveness under different browser environments.  
 
-Performance observations also revealed minor latency when handling rapid exchange operations and validation refreshes. These issues, if unaddressed, may affect user reliability in production environments. Nevertheless, most critical workflows were verified to function as intended across multiple browsers and device conditions.
-
-Moving forward, it is recommended to strengthen synchronization logic in automation scripts, enhance UI event handling for hover and dynamic elements, and conduct additional regression runs once fixes are implemented. The findings from this cycle serve as a baseline for future automation stability improvements.
+Overall, the application demonstrated consistent performance in authentication, navigation, and UI rendering, with most failures concentrated in dropdown handling, order placement flows, and inconsistent API response timing. The results of this test cycle highlight the strengths of the system in core stability while also identifying specific technical challenges that need to be addressed to ensure more predictable automation outcomes in future test executions.  
 
 ---
 
 ## Testing Methodology
 
-### Testing Approach
+The testing process was completely automated using Playwright integrated with TypeScript. The Page Object Model (POM) design pattern was implemented to structure automation scripts efficiently, ensuring that each module of the GoQuant system was represented as an independent, reusable class. The tests were written and executed entirely through Visual Studio Code, and all results were managed within the GitHub repository to maintain traceability and version control.  
 
-A comprehensive risk-based testing strategy was implemented to ensure complete coverage of high-impact user flows within the GoQuant Exchange Management System. The test suite included functional, UI, and integration testing phases to validate authentication, exchange management, and navigation controls.
+Each test case was developed to replicate real user behavior across the system. The automation covered key modules including login authentication, exchange account addition and deletion, order placement, order book and order history validation, GoOps wallet verification, reconciliation confirmation, and settings configuration. Test cases simulated user journeys through the Admin dashboard, GoTrade, and GoOps environments to ensure seamless functionality between interconnected components.  
 
-The methodology was structured around three distinct phases, each building upon the previous stage’s findings:
+The test design emphasized accurate locator usage with robust synchronization handling. In scenarios involving dynamic dropdowns or slow UI rendering, explicit waits were applied, and force clicks were implemented where element stability was unreliable. Additionally, certain test cases used controlled delays and assertions based on visibility and text validation to confirm the accurate rendering of UI elements after asynchronous operations.  
 
-**Smoke Testing:** Validated that core application features were operational across browsers.  
-**Functional Testing:** Verified exchange addition, modification, and deletion operations.  
-**Regression and Edge Case Testing:** Ensured reliability under varied conditions such as multiple concurrent exchanges and delayed API responses.
-
-This structured testing ensured early detection of blocking issues and consistent coverage across environments.
+All tests were executed across Chromium, Firefox, and WebKit browsers to confirm multi-browser compatibility. Execution results were reviewed after each run to evaluate both success rates and script reliability. Traces and video recordings generated by Playwright were analyzed to identify failure points, confirm synchronization gaps, and validate backend behavior against frontend actions. The complete execution was designed to mirror actual user workflows as closely as possible while ensuring automation consistency and precision.
 
 ---
 
 ## Tools and Techniques Employed
 
-Testing activities were executed using **Playwright with TypeScript** as the primary automation tool, chosen for its robust cross-browser support, reliability, and built-in synchronization mechanisms. Tests were designed using the **Page Object Model (POM)** for enhanced maintainability and scalability.
+Playwright with TypeScript was the primary framework used for the end-to-end automation of the GoQuant system. Playwright was chosen for its modern cross-browser testing capabilities, powerful synchronization management, and support for parallel execution, which allowed the test suite to run efficiently across multiple environments. Visual Studio Code was used as the integrated development environment for writing, executing, and debugging scripts, while GitHub was utilized for version control and repository management.  
 
-Supporting tools and configurations included:  
+The automation relied heavily on advanced Playwright locators, particularly XPath and data-testid-based selectors, to handle dynamic UI components. Several modules required the use of `force: true` during click actions to bypass intermittent issues where elements were visible but not interactable due to frontend rendering delays. Explicit waits and assertions were incorporated to ensure each test action was executed only after the UI reached a stable state.  
 
-- **Playwright Test Runner** for structured execution and reporting  
-- **Allure Reports** for visualizing execution outcomes  
-- **GitHub Actions CI** for automated pipeline integration  
-- **JSON Fixtures** for managing consistent test data sets  
+Each automation script was structured using the Page Object Model, where reusable methods represented user actions such as login, navigation, exchange addition, deletion, order placement, and reconciliation verification. This modular approach not only improved readability and maintainability but also allowed for rapid debugging and efficient updates when UI changes occurred.  
 
-Accessibility testing was partially integrated to ensure interface responsiveness and proper field validations. Cross-browser testing was completed on Chromium, Firefox, and WebKit, validating compatibility and UI consistency across platforms.
+The Playwright test runner was configured to capture screenshots and generate HTML reports for each run, allowing detailed analysis of failure points. Network traces and console logs were reviewed for each failed test case to determine whether the issue originated from the frontend, backend, or automation timing. Through this process, the automation coverage was comprehensive, and system performance under automation conditions was effectively validated.
 
 ---
 
 ## Challenges Encountered and Solutions Implemented
 
-Several technical challenges were encountered during the testing phase that required targeted solutions to ensure reliable automation and consistent test results.
+During the test cycle, several automation-specific challenges were encountered that required adaptive handling. One of the most persistent issues was the instability of dropdown menus, which often failed to remain open long enough for selection. This caused multiple test cases involving exchange selection, account addition, and settings configuration to fail intermittently. To overcome this, forced interactions were applied, and explicit waits were introduced to synchronize UI readiness before performing actions.  
 
-1. **Flaky Element Interactions:** Dynamic dropdown and hover-based menus occasionally disappeared before interaction. This was mitigated using conditional waits and force-clicks to stabilize element targeting.  
-2. **Synchronization Delays:** Asynchronous page updates caused timing inconsistencies. Implementing controlled waits and verifying locator visibility improved stability.  
-3. **Exchange Deletion Confirmation:** Intermittent modal detection issues during exchange removal were addressed through explicit wait strategies.  
-4. **CI Integration Stability:** Parallel executions initially caused browser session conflicts, which were resolved by isolating contexts per test run.
+Another major challenge involved inconsistent backend synchronization during account addition and order placement. While the UI reflected successful completion, API responses were delayed or inconsistent, causing validation steps to fail. This behavior led to discrepancies between expected and observed states during test assertions. The issue was mitigated by increasing wait durations, introducing `waitForResponse()` validations, and rechecking API status before proceeding to subsequent test steps.  
 
-By addressing these challenges, the overall reliability of automated test runs improved significantly, laying the groundwork for more scalable regression testing in subsequent cycles.
+Order placement was particularly affected by backend delays and unresponsive UI elements. In several runs, orders could not be placed successfully even when input values were valid. The automation was enhanced to include multiple validation layers that checked order submission confirmation and subsequent reflection in the Order Book and Order History sections.  
+
+GoOps wallet and reconciliation modules also exhibited synchronization issues, where UI updates lagged behind backend responses, resulting in inaccurate validation of wallet balances and reconciliation entries. Although this issue was beyond the scope of frontend automation fixes, enhanced waits and validation conditions were added to improve script reliability.  
+
+Finally, within the Settings module, hover-based dropdowns frequently caused failed interactions as they collapsed before selection actions were completed. Playwright’s hover actions and event listeners were implemented to maintain focus during interaction, increasing test consistency. These adjustments collectively improved overall test stability, even under dynamic and asynchronous system conditions.
 
 ---
+
