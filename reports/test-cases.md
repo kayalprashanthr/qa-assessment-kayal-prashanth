@@ -51,11 +51,11 @@ Authentication
 User must be on the login page  
 
 **Test Data:**  
-Valid  
+`Valid` 
 Email: user10@goquant.io  
 Password: 60Re3G9KvvFl4Ihegxpi  
 
-Invalid  
+`Invalid`
 Email: user10@goquant.io  
 Password: Invalid123@  
 
@@ -104,7 +104,7 @@ Authentication
 3. User has already completed or skiped the start tour once  
 
 **Test Data:**  
-Valid  
+`Valid` 
 Email: user10@goquant.io  
 Password: 60Re3G9KvvFl4Ihegxpi   
 
