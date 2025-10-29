@@ -1,10 +1,17 @@
 ## Test Cases
 
 **Test Case ID:** 001
-**Test Scenario:** Verify that the website opens successfully without any issues
+
+**Test Scenario:** 
+Verify that the website opens successfully without any issues
+
 **Module:** Application Launch
-**Preconditions:** User has stable internet connection and valid URL
-**Test Data:** Website link - https://test1.gotrade.goquant.io
+
+**Preconditions:** 
+User has stable internet connection and valid URL
+
+**Test Data:** 
+Website link - https://test1.gotrade.goquant.io
 
 **Test Steps:**
 
@@ -12,13 +19,24 @@
 2. Enter the website URL in the address bar
 3. Press Enter
 
-**Expected Result:** The website should load completely without any delay or error messages
-**Actual Result:** Website loaded successfully
+**Expected Result:** 
+The website should load completely without any delay or error messages
+
+**Actual Result:** 
+Website loaded successfully
+
 **Status:** Pass
+
 **Priority:** High
-**Screen records:** [Click](https://drive.google.com/file/d/1vETf-AfXrMFXzg-uN5IXzHMzuaVKbQ_r/view?usp=sharing)
-**Technical Details:** The website returned HTTP status code 200 (OK), confirming successful server connectivity
-**Comments:** Website launched successfully and displayed all components correctly.
+
+**Screen records:** 
+[Click](https://drive.google.com/file/d/1vETf-AfXrMFXzg-uN5IXzHMzuaVKbQ_r/view?usp=sharing)
+
+**Technical Details:** 
+The website returned HTTP status code 200 (OK), confirming successful server connectivity
+
+**Comments:** 
+Website launched successfully and displayed all components correctly.
 
 **Test Case ID:** 002
 **Test Scenario:** Verify login functionality using both valid and invalid credentials
