@@ -40,13 +40,17 @@ Website launched successfully and displayed all components correctly.
 
 ---
 
-___
-
 **Test Case ID:** 002
-**Test Scenario:** Verify login functionality using both valid and invalid credentials
+
+**Test Scenario:** 
+Verify login functionality using both valid and invalid credentials
+
 **Module:** Authentication
+
 **Preconditions:** User must be on the login page
+
 **Test Data:** 
+
 Valid:
 • Email: user10@goquant.io
 • Password: 60Re3G9KvvFl4Ihegxpi 
@@ -64,13 +68,23 @@ Invalid:
 6. Enter valid credentials and click Login
 7. Observe the result
 
-**Expected Result:** Invalid credentials → Error message should be displayed “Invalid email or password”
+**Expected Result:** 
+Invalid credentials → Error message should be displayed “Invalid email or password”
 Valid credentials → User should be redirected to the Dashboard or Home page
-**Actual Result:** Invalid credentials → Error message displayed correctly
+
+**Actual Result:** 
+Invalid credentials → Error message displayed correctly
 Valid credentials → User logged in successfully
+
 **Status:** Pass
+
 **Priority:** High
+
 **Screen records:** [Click](https://drive.google.com/file/d/16bEJAb3-EiqlKTaSfdY8d-zlzs1yyHLA/view?usp=sharing)
-**Technical Details:** Network request /auth/login returns HTTP 200 for valid credentials and HTTP 401 (Unauthorized) for invalid ones. No console errors observed. Response payload includes JWT token and user details upon success.
-**Comments:** Login flow functions as expected for both valid and invalid credentials. Input field validation and error handling are properly implemented.
+
+**Technical Details:** 
+Network request /auth/login returns HTTP 200 for valid credentials and HTTP 401 (Unauthorized) for invalid ones. No console errors observed. Response payload includes JWT token and user details upon success.
+
+**Comments:** 
+Login flow functions as expected for both valid and invalid credentials. Input field validation and error handling are properly implemented.
 
