@@ -12,7 +12,7 @@ Application Launch
 User has stable internet connection and valid URL  
 
 **Test Data:** 
-Website link - https://test1.gotrade.goquant.io  
+Website link - `https://test1.gotrade.goquant.io`  
 
 **Test Steps:**  
 1. Open a web browser  
@@ -52,11 +52,11 @@ User must be on the login page
 
 **Test Data:**  
 `Valid` 
-Email: user10@goquant.io  
+Email: `user10@goquant.io`  
 Password: 60Re3G9KvvFl4Ihegxpi  
 
 `Invalid`
-Email: user10@goquant.io  
+Email: `user10@goquant.io`  
 Password: Invalid123@  
 
 **Test Steps:**  
