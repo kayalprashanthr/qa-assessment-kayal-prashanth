@@ -20,7 +20,7 @@ export class addAccounts{
         await this.page.locator("//input[@name='passphrase']").pressSequentially(Password,{delay:50});
         await this.page.click("//button[@role='switch']");
         await this.page.click("(//button[text()='Add Account'])[2]");
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(15000);
         const closeBtn = this.page.locator("//span[text()='Close']");
         if (await closeBtn.isVisible()) {
             await closeBtn.click({ force: true });
@@ -37,7 +37,7 @@ export class addAccounts{
         await this.page.locator("//input[@name='apiSecret']").pressSequentially(USDMSecret,{delay:50});
         await this.page.click("//button[@role='switch']");
         await this.page.click("(//button[text()='Add Account'])[2]");
-        await this.page.waitForTimeout(10000);
+        await this.page.waitForTimeout(15000);
         const closeBtn = this.page.locator("//span[text()='Close']");
         if (await closeBtn.isVisible()) {
             await closeBtn.click({ force: true });
@@ -52,8 +52,8 @@ export class addAccounts{
         await this.page.locator("//input[@name='apiKey']").pressSequentially(CoinMKey,{delay:50});
         await this.page.locator("//input[@name='apiSecret']").pressSequentially(CoinMSecret,{delay:50});
         await this.page.click("//button[@role='switch']");
-        await this.page.click("(//button[text()='Add Account'])[2]");
-        await this.page.waitForTimeout(10000);
+        await this.page.click("(//button[text()='Add Account'])[2]",{ force: true});
+        await this.page.waitForTimeout(15000);
         const closeBtn = this.page.locator("//span[text()='Close']");
         if (await closeBtn.isVisible()) {
             await closeBtn.click({ force: true });

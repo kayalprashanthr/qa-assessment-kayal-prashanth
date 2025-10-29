@@ -9,7 +9,7 @@ export class deleteAccounts{
         this.accounts = "//span[text()='Accounts']";
         this.admin = "//a[@href='/admin']";
     }
-    async accDelete(){
+    async accDelete(){ 
         await this.page.click(this.accounts);
         await this.page.click(this.admin);
         await this.page.click("(//button[text()='Delete'])[3]");
