@@ -36,13 +36,19 @@ The final phase focused on Edge Case and Boundary Testing. Here, I deliberately 
 
 ### Test Case Selection Rationale and In-Depth Analysis
 
-The selection of the 21 distinct test cases was driven by a thorough risk assessment, considering both high business impact (potential financial loss) and technical complexity (external API reliance). The cases were organized into primary categories addressing specific aspects of application quality.
+The selection of the 21 distinct test cases was driven by a thorough risk assessment, prioritizing functions related to financial transactions and external API integration. The cases were strategically grouped into the following refined categories to maximize issue discovery:
 
-Authentication and Accounts Management tests were prioritized as the highest risk due to the sensitive nature of external API credentials. I designed cases to validate successful linking and deletion, which immediately revealed the critical API connection inconsistencies and the backend function parameter mismatch when attempting modifications.
+**Authentication and Session Management Test Cases (4 tests):** These tests were foundational, verifying secure user access before proceeding to transactional flows. I designed test cases to validate not only successful authentication and secure sign-out flows but also to probe for correct session handling across browser launches. The tests included scenarios for initial site launch, valid/invalid credential checks, session persistence, and proper session clearance upon sign-out. All critical login and session flows passed successfully, confirming the application's basic security foundation is operational.
 
-Order Execution and Data Integrity received the most comprehensive test coverage, examining execution across all integrated exchanges and the subsequent reflection in Order History. This category proved instrumental in discovering the critical trade failures where the UI confirmed “Order Accepted,” but the execution failed due to UDP Server Errors or subsequent data synchronization issues.
+**External Accounts and Admin Management Test Cases (3 tests):** This category was prioritized as the highest technical and business risk, as it involves handling sensitive external API keys and managing the primary connection to the trading exchanges. The tests examined the complete CRUD lifecycle for exchange accounts (Add, Modify, Delete). This category proved immediately valuable by revealing critical API connection instabilities when adding accounts (failing with "UDP Server Error") and exposing a severe backend function parameter mismatch when attempting account modifications, indicating a fundamental architectural flaw in the account management service.
 
-Data Segregation and Reconciliation tests focused on the integrity and security of user data. This validation confirmed the severe data exposure issue where the reconciliation API returned entries belonging to multiple User IDs, indicating a fundamental server-side filtering failure.
+**Core Order Execution and Transaction Integrity Test Cases (8 tests):** As the primary financial functionality, Core Order Execution received the most comprehensive test coverage. These tests systematically examined trade placement, order cancellation, history logging, and pre-trade quantity calculation across all three integrated exchanges. The testing here was paramount in discovering the most critical defects: multiple instances of silent order execution failure (UI confirmed "Order Accepted," but the trade did not execute), persistent data synchronization issues where confirmed trades were missing from Order History, and a high-severity backend UDP timeout issue when attempting to cancel an "In Progress" order.
+
+**Real-Time Data Feed Integrity Test Cases (3 tests):** These tests focused on the stability of the application's dynamic and real-time features, specifically the live market data feeds critical for trading. The tests validated the continuous streaming of real-time Order Book data across different exchanges and symbols. The Order Book tests were invaluable in identifying unstable WebSocket connections and inconsistent data loading, where the order books frequently showed missing or delayed information for various symbols, directly impacting the user's ability to make timely trading decisions.
+
+**GoOps Data Validation and Segregation Test Cases (2 tests):** These two highly critical tests focused on end-to-end data integrity and security within the GoOps module. The tests included validating the synchronization of exchange accounts from the Admin setup to the Wallets page, and, crucially, checking data isolation in the Reconciliation module. This validation confirmed the discovery of the most severe bug: a critical data exposure issue in the Reconciliation API, which returned order history belonging to multiple User IDs. This finding confirmed a fundamental, non-negotiable failure of server-side data security.
+
+**User Experience (UX) and Accessibility Test Cases (1 test):** This specific test focused on the quality and usability of frontend controls, particularly system-wide keyboard shortcuts defined in the Settings module. The test exposed a minor but important defect where the application's shortcut logic was faulty, failing to differentiate between valid and invalid key combinations and improperly triggering navigation for keys that should have been ignored.
 
 ### Tools and Techniques Employed
 
@@ -367,3 +373,6 @@ Both valid (Alt + P) and invalid (Shift + P) shortcuts redirect to GoOps.
 
 **Evidence:**  
 [Screen Recording](https://drive.google.com/file/d/1dA5LjOA7jqs-R2gKXByFJP6bwhHhGWVB/view?usp=sharing)
+
+---
+

@@ -189,9 +189,9 @@ Admin
 User is logged in and on “Admin” page; valid API credentials available 
 
 **Test Data:**  
-- OKX: API Key + Secret
-- Binance USDM: API Key + Secret
-- Binance CoinM: API Key + Secret 
+`OKX:` API Key + Secret
+`Binance USDM:` API Key + Secret
+`Binance CoinM:` API Key + Secret 
 
 **Test Steps:**  
 1. Click “Add Exchange”
