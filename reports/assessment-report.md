@@ -408,3 +408,8 @@ Finally, the User Experience (UX) and Accessibility test failed, confirming the 
 
 ---
 
+## Recommendations for Improvement
+
+Based on the testing activities performed and the issues identified, I recommend a structured approach to enhance the application’s stability and performance. The improvements should be prioritized based on feature criticality, defect severity, and their overall impact on user workflows and reliability.
+
+---
