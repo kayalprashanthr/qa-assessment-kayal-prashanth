@@ -376,3 +376,24 @@ Both valid (Alt + P) and invalid (Shift + P) shortcuts redirect to GoOps.
 
 ---
 
+## Technical Analysis
+
+### Performance Observations
+
+The application's responsiveness is severely hindered by numerous backend communication failures. This includes persistent inconsistent API connections and frequent UDP server timeouts for critical actions like order cancellation. Initial page load times are acceptable, but overall performance is dominated by these core functional delays.
+
+### Browser Compatibility Issues
+
+Cross-browser testing revealed significant stability and compatibility disparities, clearly indicating that the application was optimized for a single engine. 
+
+**Chromium-based browser:** provided the best overall stability, speed, and responsiveness, achieving approximately a 79% pass rate in automated tests. This compatibility suggests the application was primarily developed and tested in Chrome, resulting in suboptimal experiences for users of other browsers.
+
+**WebKit browser:** showed moderate stability issues, characterized by frequent UI inconsistencies. Automation often required using workarounds like force: true to reliably interact with unstable elements, such as dropdown components. 
+
+**Firefox:** proved to be the least stable, exhibiting major compatibility and loading issues, with test runs frequently failing due to the application not loading correctly or displaying inconsistent UI element positions, alongside extremely slow interactions. Additionally, attempts to run the automation suite on Mobile and iPad viewports showed that the UI underwent significant visual changes across these viewports, which is designated as a mandatory phase for future analysis.
+
+###  Accessibility Violations
+
+A critical operational issue was observed that compromises the predictable function of the interface and disrupts user workflow. This is caused by an incorrect shortcut validation logic where invalid key combinations are executed as valid shortcuts. As a result, when a user attempts a standard operating system command `Control + C` for copying text, an unintended application function like redirection is executed instead, leading to unpredictable keyboard behavior.
+
+---
