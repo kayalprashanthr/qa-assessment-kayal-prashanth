@@ -51,12 +51,12 @@ Verify login functionality using both valid and invalid credentials
 
 **Test Data:** 
 
-Valid:
-• Email: user10@goquant.io
-• Password: 60Re3G9KvvFl4Ihegxpi 
-Invalid:
-• Email: user10@goquant.io
-• Password: Invalid123@
+**Valid:**
+- Email: user10@goquant.io
+- Password: 60Re3G9KvvFl4Ihegxpi 
+**Invalid:**
+- Email: user10@goquant.io
+- Password: Invalid123@
 
 **Test Steps:**
 
@@ -69,12 +69,12 @@ Invalid:
 7. Observe the result
 
 **Expected Result:** 
-Invalid credentials → Error message should be displayed “Invalid email or password”
-Valid credentials → User should be redirected to the Dashboard or Home page
+- Invalid credentials → Error message should be displayed “Invalid email or password”
+- Valid credentials → User should be redirected to the Dashboard or Home page
 
 **Actual Result:** 
-Invalid credentials → Error message displayed correctly
-Valid credentials → User logged in successfully
+- Invalid credentials → Error message displayed correctly
+- Valid credentials → User logged in successfully
 
 **Status:** Pass
 
