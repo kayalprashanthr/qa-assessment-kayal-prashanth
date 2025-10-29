@@ -38,6 +38,10 @@ The website returned HTTP status code 200 (OK), confirming successful server con
 **Comments:** 
 Website launched successfully and displayed all components correctly.
 
+---
+
+___
+
 **Test Case ID:** 002
 **Test Scenario:** Verify login functionality using both valid and invalid credentials
 **Module:** Authentication
